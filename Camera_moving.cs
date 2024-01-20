@@ -6,18 +6,18 @@ using UnityEngine.UIElements;
 public class Camera_moving : MonoBehaviour
 {
 
-    public Transform cameraTransform;
-    public CharacterController characterController;
+    public Camera Cam;
 
-    public float moveSpeed = 10f;
-    public float jumpSpeed = 10f;
-    public float gravity = -20f;
-    public float yVelocity = 0;
+    private float camRotSpeed = 10;
+    private float sensitive = 500;
 
-    void Update()
+    void CameraViewControl()
     {
-        MouseRotation();
-        KeyboardMove();
+        float rotx = Input.GetAxis("Mouse Y");
+        float rotY = Input.GetAxis("Mouse X");
+
+        transform.localEulerAngles = new Vector3(rotx, rotY, 0) * sensitive * Time.deltaTime;
+
     }
 
     
